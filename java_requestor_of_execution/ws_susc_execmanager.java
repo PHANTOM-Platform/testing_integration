@@ -111,7 +111,7 @@ public class ws_susc_execmanager extends WebSocketClient {
 		final String charset = "UTF-8";
 		String token="";
 		String exec_id="";
-		String SrcJson="/home/jmontana/phantom_dev/managers/web-execmanager/execstatus.json";
+		String SrcJson="execstatus.json";
 		File upload_json = new File(SrcJson);
 		// ***** REQUEST FOR A TOKEN **************************************
 		try{
