@@ -71,6 +71,10 @@ where it is identified the user and on which execution to be notified.
 
 It can be performed as many suscriptions as wished on the same websocket connection.
 
+### 2.1 The notification
+
+The notification is in JSON format, it is informat like the JSON file at [example_of_notification][output].
+It is responsability of the receiver to parse the JSON data.
 
 ## VIDEO
 
@@ -104,5 +108,6 @@ Copyright (C) 2014,2019 University of Stuttgart
 
 [Apache License v2](LICENSE).
  
+[output]: https://github.com/PHANTOM-Platform/testing_integration/blob/master/app_output/exec_stats.json
 [video]: https://youtu.be/6s6AOytHV6I
 [phantom]: http://www.phantom-project.org
