@@ -9,11 +9,11 @@
 
 3. **Address of the Resource Manager**, for instance  "localhost:8600"
 
-⋅⋅⋅It is mandatory to provide a **TOKEN** !!
+   It is mandatory to provide a **TOKEN** !!
 
-⋅⋅⋅In the example is generated a new token from a user id, such "bob@abc.com" and password "1234".
+   In the example is generated a new token from a user id, such "bob@abc.com" and password "1234".
 
-⋅⋅⋅BUT it is expected that users will provide a token, and NOT provide their id neither their password.
+   BUT it is expected that users will provide a token, and NOT provide their id neither their password.
 
 4. And information for the Deploy Manager in a JSON file, which at least has to contain:
 
