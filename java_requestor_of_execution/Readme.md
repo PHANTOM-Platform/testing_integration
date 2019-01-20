@@ -77,7 +77,16 @@ It can be performed as many suscriptions as wished on the same websocket connect
 The notification is in JSON format, it is informat like the JSON file at [example_of_notification][output].
 It is responsability of the receiver to parse the JSON data.
 
-## VIDEO
+## Running the example
+
+After you update the appropiate paths of the servers in the java file,
+you can compile and run it with the script
+
+```bash
+bash test_client_ws_suscriber_execmanager.sh;
+```
+
+### 3.1 VIDEO
 
 Video demo avaiblable at  [https://youtu.be/6s6AOytHV6I][video]
 
