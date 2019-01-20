@@ -17,9 +17,9 @@
 
 4. And information for the Deploy Manager in a JSON file, which at least has to contain:
 
-⋅⋅⋅* **Identification of the application** to be requested, for instance "montanana_demo"
+   * **Identification of the application** to be requested, for instance "montanana_demo"
 
-⋅⋅⋅* **Identification of the device** where will be run the application, for instance "node01"
+   * **Identification of the device** where will be run the application, for instance "node01"
 
 
 ## Requesting for an execuion
