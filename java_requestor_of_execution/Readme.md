@@ -1,9 +1,9 @@
-# Example in Java of requesting the execution of an APP, and requesting to be notified of the executio
+# Example in Java of requesting the execution of an APP, and requesting to be notified of the end of the execution
 
 
 # Input Parameters
 
-1. **Address of the Monitoring Server**, for instance "ocalhost:3033"
+1. **Address of the Monitoring Server**, for instance "localhost:3033"
 
 2. **Address of the Execution Manager**, for instance "localhost:8700"
 
@@ -22,9 +22,9 @@
    * **Identification of the device** where will be run the application, for instance "node01"
 
 
-## Requesting for an execuion
+## Requesting for an execution
 
-The example provide performs an http request to http://${server}:${execmanager_port}/register_new_exec
+The example provide performs an http request to *http://${server}:${execmanager_port}/register_new_exec*
 
 The **Input Parameters** provided wiht the request are: (1) the autentication token, (2) the JSON file with the information required by the Deploy Manager.
 
@@ -34,7 +34,7 @@ curl -s -H "Authorization: OAuth ${mytoken}" -H "Content-Type: multipart/form-da
 
 The **Response** is:
 
-* when succedd: a header code "200" and the body response contains the execution_id, such "AWSsuxtcSdlX_Zkd11AX".
+* when succedd: a header code "**200**" and the body response contains the **execution_id**, such "AWSsuxtcSdlX_Zkd11AX".
 * when error: a heade code containing the error code, and the body response contains a description of the error.
 
 
