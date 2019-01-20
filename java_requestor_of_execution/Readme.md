@@ -16,7 +16,8 @@ The **Input Parameters** provided with the request are: **(1)** the authenticati
 
 ```bash
 curl -s -H "Authorization: OAuth ${mytoken}" -H "Content-Type: multipart/form-data" \
-    -XPOST -F "UploadJSON=@start_exec.json" http://${execmanager_address}:${execmanager_port}/register_new_exec;
+    -XPOST -F "UploadJSON=@start_exec.json" \
+    http://${execmanager_address}:${execmanager_port}/register_new_exec;
 ```
 
 The **Response** is:
@@ -110,7 +111,7 @@ The PHANTOM project receives funding under the European Union's Horizon 2020 Res
 
 | Date        | Version | Comment          |
 | ----------- | ------- | ---------------- |
-| 19-01-2019  | 1.01     | Current version  |
+| 19-01-2019  | 1.01    | Current version  |
 
 ## License
 Copyright (C) 2014,2019 University of Stuttgart
