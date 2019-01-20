@@ -66,7 +66,7 @@ NOTICE: The Application has to be instrumeted with the MF-Library in order to re
 
 The suscription in done by a websocket connection to ***ws://serveraddress:serverport/***
 
-and sending a message for each suscription like ***"{"user":"bob@abc.com","execution_id":"exec_id"}***
+and sending a message for each suscription like ***{"user":"bob@abc.com","execution_id":"AWSsuxtcSdlX_Zkd11AX"}***
 
 
 
