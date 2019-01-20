@@ -10,7 +10,7 @@ The requester must know the address of the servers:
 
 3. **Address of the Resource Manager**, for instance  "localhost:8600"
 
-The example provide performs an http request to ***http://${server}:${execmanager_port}/register_new_exec***
+The example provided performs an http request to ***http://${server}:${execmanager_port}/register_new_exec***
 
 The **Input Parameters** provided with the request are: **(1)** the authentication token, **(2)** the JSON file with the information required by the Deploy Manager.
 
