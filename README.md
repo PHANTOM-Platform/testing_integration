@@ -6,7 +6,13 @@
 
 Thr purpose of the files here are for provide a description and examples of the integration and interaction between the PHANTOM tools, as well as within the users and instrumented applications.
 
-## Resquest of Execution of an instrumented Application, and suscription to nitification of its completion
+
+ <p align="center">
+<a href="https://github.com/PHANTOM-Platform/testing_integration/blob/master/interaction_tool-em-dm-app.png">
+<img src="https://github.com/PHANTOM-Platform/testing_integration/blob/master/interaction_tool-em-dm-app.png" align="middle" width="70%" height="70%" title="Schema" alt="interaction between requesting tool + Exec Manager + Deploy Manager + Application">
+</a> </p>
+
+## Request of Execution of an instrumented Application, and suscription to nitification of its completion
 
 In this folder there are:
 * Example in Java of requesting the execution of an APP, and requesting to be notified of the execution. files are in the folder "java_requestor_of_execution" [See the files][java_app]
