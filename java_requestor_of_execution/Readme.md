@@ -19,7 +19,8 @@ The example provide performs an http request to ***http://${server}:${execmanage
 The **Input Parameters** provided wiht the request are: **(1)** the autentication token, **(2)** the JSON file with the information required by the Deploy Manager.
 
 ```bash
-curl -s -H "Authorization: OAuth ${mytoken}" -H "Content-Type: multipart/form-data" -XPOST -F "UploadJSON=@start_exec.json" http://${server}:${execmanager_port}/register_new_exec;
+curl -s -H "Authorization: OAuth ${mytoken}" -H "Content-Type: multipart/form-data" \
+    -XPOST -F "UploadJSON=@start_exec.json" http://${server}:${execmanager_port}/register_new_exec;
 ```
 
 The **Response** is:
