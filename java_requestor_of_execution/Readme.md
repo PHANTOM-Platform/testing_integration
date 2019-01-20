@@ -16,7 +16,7 @@ The **Input Parameters** provided with the request are: **(1)** the authenticati
 
 ```bash
 curl -s -H "Authorization: OAuth ${mytoken}" -H "Content-Type: multipart/form-data" \
-    -XPOST -F "UploadJSON=@start_exec.json" http://${server}:${execmanager_port}/register_new_exec;
+    -XPOST -F "UploadJSON=@start_exec.json" http://${execmanager_address}:${execmanager_port}/register_new_exec;
 ```
 
 The **Response** is:
