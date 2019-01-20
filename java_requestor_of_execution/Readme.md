@@ -1,28 +1,18 @@
 # Example in Java of requesting the execution of an APP, and requesting to be notified of the end of the execution
 
 
-# Input Parameters
+
+
+
+## Requesting for an execution
+
+The requester must know the address of the servers:
 
 1. **Address of the Monitoring Server**, for instance "localhost:3033"
 
 2. **Address of the Execution Manager**, for instance "localhost:8700"
 
 3. **Address of the Resource Manager**, for instance  "localhost:8600"
-
-   It is mandatory to provide a **TOKEN** !!
-
-   In the example is generated a new token from a user id, such "bob@abc.com" and password "1234".
-
-   BUT it is expected that users will provide a token, and NOT provide their id neither their password.
-
-4. And information for the Deploy Manager in a JSON file, which at least has to contain:
-
-   * **Identification of the application** to be requested, for instance "montanana_demo"
-
-   * **Identification of the device** where will be run the application, for instance "node01"
-
-
-## Requesting for an execution
 
 The example provide performs an http request to *http://${server}:${execmanager_port}/register_new_exec*
 
@@ -37,10 +27,24 @@ The **Response** is:
 * when succedd: a header code "**200**" and the body response contains the **execution_id**, such "AWSsuxtcSdlX_Zkd11AX".
 * when error: a heade code containing the error code, and the body response contains a description of the error.
 
+### 1.1 The autentication token
+
+   It is mandatory to provide a **TOKEN** !!
+
+   In the example is generated a new token from a user id, such "bob@abc.com" and password "1234".
+
+   BUT it is expected that users will provide a token, and NOT provide their id neither their password.
 
 
-### 2. JSON contained the requested information by the Deploy Manager
+### 1.2. JSON contained the requested information by the Deploy Manager
 
+And information for the Deploy Manager in a JSON file, which at least has to contain:
+
+   * **Identification of the application** to be requested, for instance "montanana_demo"
+
+   * **Identification of the device** where will be run the application, for instance "node01"
+   
+   
 It is still pending to be defined, the current structure is:
 
 ```json
