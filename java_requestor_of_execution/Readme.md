@@ -4,7 +4,7 @@
 
 
 
-## Requesting for an execution
+## 1 Requesting for an execution
 
 The requester must know the address of the servers:
 
@@ -14,7 +14,7 @@ The requester must know the address of the servers:
 
 3. **Address of the Resource Manager**, for instance  "localhost:8600"
 
-The example provide performs an http request to *http://${server}:${execmanager_port}/register_new_exec*
+The example provide performs an http request to ***http://${server}:${execmanager_port}/register_new_exec***
 
 The **Input Parameters** provided wiht the request are: **(1)** the autentication token, **(2)** the JSON file with the information required by the Deploy Manager.
 
@@ -29,7 +29,7 @@ The **Response** is:
 
 ### 1.1 The autentication token
 
-   It is mandatory to provide a **TOKEN** !!
+   It is mandatory to provide a **TOKEN** !!  The token is a text string, its length in the current implementation is about 162 characters.
 
    In the example is generated a new token from a user id, such "bob@abc.com" and password "1234".
 
@@ -54,7 +54,7 @@ It is still pending to be defined, the current structure is:
 }
 ```
 
-## Suscription for Notifications
+## 2 Suscription for Notifications
 
 NOTICE: Who suscribes will get ONLY notifications from the server of the NEW updates. If you suscribe later than some updates, then you will not get those corressponding notifications.
 
@@ -62,12 +62,11 @@ WARNING: If the websocket connection is broken, then the notifications will be l
 
 NOTICE: In case of doubt if a notification is lost, the suscriber can always possible to query the status of any particular execution.
 
+NOTICE: The Application has to be instrumeted with the MF-Library in order to report of the completion to the Execution Manager.
 
-##  
+The suscription in done by a websocket connection to ***ws://serveraddress:serverport/***
 
-The described JAVA application which requires a particualr execution is in the folder "java_requestor_of_execution"
-
-The application which is instrumented with additional code for monintoring, and reporting to the execution manager is on the folder "app_to_be_executed"
+and sending a message for each suscription like ***"{"user":"bob@abc.com","execution_id":"exec_id"}***
 
 
 
