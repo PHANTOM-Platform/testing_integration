@@ -12,6 +12,14 @@ Thr purpose of the files here are for provide a description and examples of the 
 <img src="https://github.com/PHANTOM-Platform/testing_integration/blob/master/interaction_tool-em-dm-app.png" align="middle" width="70%" height="70%" title="Schema" alt="interaction between requesting tool + Exec Manager + Deploy Manager + Application">
 </a> </p>
 
+## Downloading this example
+
+It can be retrieved running:
+
+```bash
+git clone https://github.com/PHANTOM-Platform/testing_integration.git;
+```
+
 ## Request of Execution of an instrumented Application, and suscription to nitification of its completion
 
 In this folder there are:
