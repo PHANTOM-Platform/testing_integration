@@ -5,7 +5,7 @@ The data file in this folder, which is in JSON format, is the uploaded statistic
 This file is also the same data sent to the suscribers on the completion of the execution.
 
 
-**Notice: ** the format and the data structure will change as the integration of the tools with the uses cases progress.
+**Notice:** the format and the data structure will change as the integration of the tools with the uses cases progress.
 
 
 
