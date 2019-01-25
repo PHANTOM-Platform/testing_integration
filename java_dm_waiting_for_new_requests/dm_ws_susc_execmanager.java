@@ -19,39 +19,70 @@ package demo_websocket_execmanager;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.java_websocket.exceptions.WebsocketNotConnectedException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.nio.file.Files;
+import java.util.List;
+import java.util.Map;
+import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 public class dm_ws_susc_execmanager extends WebSocketClient {
-// FUNCTIONS FOR GET TOKEN
-	public static String request_server(String serveraddress, String serverport, String table_ini) throws IOException {
-		String table=table_ini.replaceAll(" ","%20");
-		String retmonmetric = new String();
-		String urlString = new String();
-		String responsestring = new String();
-		urlString = "http://"+serveraddress+":"+serverport+table;
-		URL httpurl = new URL(urlString);
-		HttpURLConnection c = (HttpURLConnection)httpurl.openConnection();//connecting to url
-		c.setRequestProperty( "Content-type", "application/x-www-form-urlencoded");
-		c.setRequestProperty( "Accept", "*/*");
-		c.setRequestMethod("GET");
-		BufferedReader in = new BufferedReader(new InputStreamReader(c.getInputStream()));//stream to resource
-		String str;
-		while ((str = in.readLine()) != null){ //reading data
-			responsestring += str;//process the response and save it in some string or so
+	static String[] labels ;
+	static String[] values ;
+	static String[] ids ;
+
+	static String[] addStringElement(String[] a, String e){
+		if(a==null){
+			a= new String[1];
+		}else{
+			a  = Arrays.copyOf(a, a.length + 1);
 		}
-		in.close();//closing stream
-		c.disconnect();
-		return responsestring;
+		a[a.length - 1] = e;
+		return a;
+	}
+
+	public static void print_all_docs(int count_fields){
+		System.out.print(" Number_of_fields:" +count_fields+"\n");
+		for(int l=0; l<count_fields; l++){
+			System.out.print("\t"+labels[l]+":"+values[l]+"\n");
+		}
+		System.out.print("\n\n");
+	}
+	
+	public static int collect_data(JSONObject myjson){
+		Iterator iterator= myjson.keys();
+		String key = null;
+		int count=0;
+		try{
+			while(iterator.hasNext()){
+				key =(String)iterator.next();
+				String keyStr =(String)key;
+				Object keyvalue = myjson.get(keyStr);
+				if(keyvalue instanceof JSONObject){
+					//nothing to do
+				}else if(keyvalue instanceof JSONArray){
+					//nothing to do
+				}else{//imadiate value
+					count=count+1;
+					labels = addStringElement(labels,(String)keyStr);
+					if(keyvalue instanceof String){
+						values = addStringElement(values,(String)keyvalue);
+					}else if(keyvalue instanceof Integer){
+						values = addStringElement(values,(String)Integer.toString((Integer)keyvalue));
+					}
+				}
+			}
+		}catch(JSONException e){
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 // FUNCTIONS FOR THE WS-SUSCRIPTIONS
@@ -70,10 +101,28 @@ public class dm_ws_susc_execmanager extends WebSocketClient {
 	@Override
 	public void onMessage( String message ) { // THIS FUNCTION WILL RUN FOR EACH RECEIVED MESSAGE
 		System.out.println("received: " + message);
+		//we look if it is defined the field app, then it a new request, in other case is the reply message of acceptance of subscription
+		values= null;
+		labels= null;
+		try{
+			int count_fields =collect_data((JSONObject) new JSONObject(message));
+			int it_is_new_exec =0;
+			for(int l=0; l<count_fields; l++){
+				if(labels[l].equals("app")){
+					it_is_new_exec = 1;
+				}
+			}
+			if(it_is_new_exec==1){
+				System.out.println("\n REQUESTED NEW EXECUTION !!!");
+				print_all_docs(count_fields );
+			}
+		}catch(JSONException e){
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void onClose( int code, String reason, boolean remote ) {
+	public void onClose( int code, String reason, boolean remote) {
 		// The codecodes are documented in class org.java_websocket.framing.CloseFrame
 		System.out.println("Connection closed by " + ( remote ? "remote peer" : "us" ) + " Code: " + code + " Reason: " + reason);
 	}
@@ -88,20 +137,9 @@ public class dm_ws_susc_execmanager extends WebSocketClient {
 	// GLOBAL VARIABLES AND CONSTANTS
 		final String serveraddress="localhost";
 		final String serverport= "8700";//execution manager
-		
 		final String user_id="montana@abc.com";
 		final String user_pw="new";
 		final String charset = "UTF-8";
-		String token="";
-		// ***** REQUEST FOR A TOKEN **************************************
-		try{
-			token = request_server(serveraddress, serverport, "/login?email="+user_id+"&pw="+user_pw);
-		} catch (IOException e){
-			e.printStackTrace();
-			System.exit(1);
-		}
-		System.out.println("token is :"+token+"[]\n"); //it returns the string token.
-
 		System.out.println("SUSCRIPTION FOR RECEPTION OF NOTIFICATIONS FROM THE EXECUTION MANAGER");
 		// ***** SUSCRIPTION FOR RECEPTION OF NOTIFICATIONS FROM THE EXECUTION MANAGER
 		String serverlocation = "ws://" + serveraddress + ":" + serverport + "/";
@@ -118,7 +156,7 @@ public class dm_ws_susc_execmanager extends WebSocketClient {
 			exc.printStackTrace();
 			System.exit(5);
 		}
-		System.out.println("\nSuscribe for PENDING execs:");
+		System.out.println("\nSubscribe for PENDING execs:");
 		try {
 			ws_client.send("{\"user\":\"alice@abc.com\", \"execution_id\":\"any\", \"type\":\"pending\"}"); //user is for debugging purposes, it may help to find lost connections
 		} catch (WebsocketNotConnectedException ex) {

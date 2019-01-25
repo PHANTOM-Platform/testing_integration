@@ -11,6 +11,6 @@
 		mkdir demo_websocket_execmanager;
 	fi;
 	
-	javac -classpath org.json.jar:java_websocket.jar:. dm_ws_susc_execmanager.java -d .;
-	java -classpath org.json.jar:apache-httpcomponents-httpcore.jar:java_websocket.jar:.  demo_websocket_execmanager/dm_ws_susc_execmanager
+	javac -classpath java-json.jar:org.json.jar:java_websocket.jar:. dm_ws_susc_execmanager.java -d .;
+	java -classpath java-json.jar:org.json.jar:apache-httpcomponents-httpcore.jar:java_websocket.jar:.  demo_websocket_execmanager/dm_ws_susc_execmanager
 	
