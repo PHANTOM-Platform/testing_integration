@@ -87,7 +87,7 @@ void create_threads(unsigned long threadCount, mpf_t rop, unsigned long precisio
 	free(workInfo.workers);
 }
 
-void my_start_monitoring( const char *mf_server, const char* resource_manager, const char *platform_id, struct app_report_t *my_app_report, const char *token){
+void my_start_monitoring( const char *mf_server, const char *exec_manager, const char *exec_id, const char* resource_manager, const char *platform_id, struct app_report_t *my_app_report, const char *token){
 /* MONITORING METRICS: optional definition, this will merge over the default one loaded from the Resource Manager */
 	metrics m_resources;
 	m_resources.num_metrics = 3;
@@ -103,7 +103,7 @@ void my_start_monitoring( const char *mf_server, const char* resource_manager, c
 	m_resources.sampling_interval[2] = 10; // ms
 	strcpy(m_resources.metrics_names[2], "xlnx_monitor");
 /* MONITORING START */
-	mf_start(mf_server, resource_manager, platform_id, &m_resources,my_app_report,token);//returns char *datapath
+	mf_start(mf_server, exec_manager, exec_id, resource_manager, platform_id, &m_resources,my_app_report,token);//returns char *datapath
 }
 
 int main(int argc, char* argv[]) {
@@ -137,7 +137,7 @@ int main(int argc, char* argv[]) {
 	strcpy(my_app_report->my_thread_report[0]->taskid,"component_a");
 	strcpy(my_app_report->my_thread_report[1]->taskid,"component_b");
 	/********************MONITORNG START ************************/
-	my_start_monitoring(mf_server, resource_manager, regplatformid, my_app_report, token);
+	my_start_monitoring(mf_server, exec_manager, exec_id, resource_manager, regplatformid, my_app_report, token);
 	my_app_report->start_app = mycurrenttime();
 	/********************* THE APPLICATION- WE CREATE SOME THREADS ***********************************/
 	printf("\n Starting program\n");
