@@ -20,6 +20,13 @@ It can be retrieved running:
 git clone https://github.com/PHANTOM-Platform/testing_integration.git;
 ```
 
+**OR** alternatively, if you prefer to use **svn** instead of git:
+
+```bash
+svn export https://github.com/PHANTOM-Platform/testing_integration.git/trunk testing_integration;
+```
+
+
 ## Request of Execution of an instrumented Application, and suscription to nitification of its completion
 
 In this folder there are:
