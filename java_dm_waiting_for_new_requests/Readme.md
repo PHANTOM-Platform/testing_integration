@@ -11,7 +11,7 @@ The requester must know the address of the servers:
  
  1. websocket connection to ***ws://${exec_manager_address}:${execmanager_port}***
  
- 2. a subscrition for notifications of ***new*** pending exectutions by sending a message for each subscription like ***{"user":"bob@abc.com","execution_id":"any"}*** to the openned websocket connection. 
+ 2. a subscrition for notifications of ***new*** pending exectutions by sending a message for each subscription like ***{"user":"bob@abc.com","execution_id":"any", "type":"pending" }*** to the openned websocket connection. 
  
  
 
