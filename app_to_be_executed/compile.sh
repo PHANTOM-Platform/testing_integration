@@ -1,6 +1,7 @@
 #!/bin/bash
 
 make clean;
+if [ ! -d bin ]; then mkdir bin ; fi;
 
 #!! please update with the correct path where you have the Mf_api
 cp ../Monitoring_client/src/util/src/mf_util.h src;
