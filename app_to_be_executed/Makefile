@@ -1,7 +1,10 @@
 ## Copyright 2014-2018 University of Stuttgart
 ## by J.M. Montañana
 
-MF_Client_Path := $(PWD)
+#plase assing to MF_Client_Path the correct path to the MF_api  !!!!!!!!!!!!!!!!!
+#MF_Client_Path := $(PWD)
+MF_Client_Path = "/home/jmontana/phantom_mf/Monitoring_client/src"
+
 
 ARCH   := $(shell getconf LONG_BIT)
 
