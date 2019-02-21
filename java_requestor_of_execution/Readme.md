@@ -47,9 +47,12 @@ It is still pending to be defined, the current structure is:
 
 ```json
 {
-	"app": "HPC USE CASE",
-	"device": "HLRS Raspberry pi3"
-}
+	"project":"ProjectName",
+	"map":"MapName",
+	"requested-by":"mom/mbt/user",
+	"input":"InputFileName"
+} 
+
 ```
 
 ## 2 Subscription for Notifications
