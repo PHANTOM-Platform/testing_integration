@@ -1,4 +1,6 @@
 {
-	"app": "HPC USE CASE",
-	"device": "HLRS Raspberry pi3"
+	"project":"ProjectName",
+	"map":"MapName",
+	"requested-by":"mom/mbt/user",
+	"input":"InputFileName.txt"
 }
