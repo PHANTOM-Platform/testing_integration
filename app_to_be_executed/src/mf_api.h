@@ -4,6 +4,9 @@
 #define MAX_NUM_METRICS     9
 #define NAME_LENGTH          32
 
+#define SUCCESS 0
+#define FAILED 1
+
 typedef struct metrics_t {
 	long sampling_interval[MAX_NUM_METRICS];	//in milliseconds
 	char metrics_names[MAX_NUM_METRICS][NAME_LENGTH];	//user defined metrics
@@ -14,7 +17,7 @@ typedef struct metrics_t {
 extern int running;
 extern int keep_local_data_flag;
 extern char parameters_name[9][32];
-extern float parameters_value[9];
+// extern float parameters_value[9];
 
 /* additonal functions developed during the integration */
 typedef struct Thread_report_t {
@@ -86,7 +89,7 @@ int mf_user_metric(char *metric_name, char *value);
 * Return the path of data files
 */
 char *mf_start(const char *server, const char *exec_server, const char *exec_id, const char* resource_manager, const char *platform_id, metrics *m,struct app_report_t *my_app_report, const char *token);
-	
+
 /**
 * Stop threads.
 * Close all the files for data storage.
@@ -112,6 +115,5 @@ char* mf_new_workflow(char *server, char *application_id, char *author_id,
 * @return the execution_id
 */
 char* mf_send(const char *server,const  char *application_id,const  char *component_id,const  char *platform_id,const  char *token);
-
 
 #endif /* _MF_API_H */

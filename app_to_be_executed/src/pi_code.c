@@ -42,8 +42,8 @@ inline void mpz_fact(mpz_t ret, mpz_t n) {
 void chudnovsky(mpf_t rop, unsigned long precision, unsigned long iterStart, unsigned long iterFinish) {
 	unsigned long k1;
 	mpz_t k2;
-	mpf_t sum, fraction; 
-	mpz_t numerator, denominator_part1; 
+	mpf_t sum, fraction;
+	mpz_t numerator, denominator_part1;
 	mpf_t numerator_f, denominator_part1_f;
 	mpz_t tokenNeg1_powK, token1359, token5451, token6403_pow3, token6403;
 	mpf_t token6403_NegSqrt;
@@ -56,8 +56,8 @@ void chudnovsky(mpf_t rop, unsigned long precision, unsigned long iterStart, uns
 	mpz_init(denominator_part1);
 	mpf_init2(denominator_part1_f, precision);
 	mpz_init_set_ui(tokenNeg1_powK, 1u);
-	mpz_init_set_ui(token1359, 13591409u); 
-	mpz_init_set_ui(token5451, 545140134u); 
+	mpz_init_set_ui(token1359, 13591409u);
+	mpz_init_set_ui(token5451, 545140134u);
 	mpz_init_set_str(token6403_pow3, "262537412640768000", 10);
 	mpz_init_set_ui(token6403, 640320u);
 	mpf_init2(token6403_NegSqrt, precision);
@@ -106,7 +106,7 @@ void chudnovsky(mpf_t rop, unsigned long precision, unsigned long iterStart, uns
 	mpz_clear(denominator_part1);
 	mpz_clear(tokenNeg1_powK);
 	mpz_clear(token1359);
-	mpz_clear(token5451); 
+	mpz_clear(token5451);
 	mpz_clear(token6403_pow3);
 	mpz_clear(token6403);
 	mpz_clear(k2);
@@ -114,5 +114,5 @@ void chudnovsky(mpf_t rop, unsigned long precision, unsigned long iterStart, uns
 	mpf_clear(fraction);
 	mpf_clear(numerator_f);
 	mpf_clear(denominator_part1_f);
-	mpf_clear(token6403_NegSqrt);	
+	mpf_clear(token6403_NegSqrt);
 }

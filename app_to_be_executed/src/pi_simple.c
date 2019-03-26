@@ -87,7 +87,7 @@ void create_threads(unsigned long threadCount, mpf_t rop, unsigned long precisio
 	free(workInfo.workers);
 }
 
-void my_start_monitoring( const char *mf_server, const char *exec_manager, const char *exec_id, const char* resource_manager, const char *platform_id, struct app_report_t *my_app_report, const char *token){
+void my_start_monitoring(const char *mf_server, const char *exec_manager, const char *exec_id, const char* resource_manager, const char *platform_id, struct app_report_t *my_app_report, const char *token){
 /* MONITORING METRICS: optional definition, this will merge over the default one loaded from the Resource Manager */
 	metrics m_resources;
 	m_resources.num_metrics = 3;
@@ -97,13 +97,15 @@ void my_start_monitoring( const char *mf_server, const char *exec_manager, const
 	}
 	m_resources.local_data_storage = 1; /*remove the file if user unset keep_local_data_flag */
 	m_resources.sampling_interval[0] = 10; // 1000 stands for 1s
-	strcpy(m_resources.metrics_names[0], "resources_usage");
+	strcpy(m_resources.metrics_names[0], "resources_usage");//METRIC_NAME_1
 	m_resources.sampling_interval[1] = 10; // ms
-	strcpy(m_resources.metrics_names[1], "power");
+	strcpy(m_resources.metrics_names[1], "power");//METRIC_NAME_3
 	m_resources.sampling_interval[2] = 10; // ms
-	strcpy(m_resources.metrics_names[2], "xlnx_monitor");
+	strcpy(m_resources.metrics_names[2], "xlnx_monitor");//METRIC_NAME_2
+// 	m_resources.sampling_interval[3] = 10; // ms
+// 	strcpy(m_resources.metrics_names[3], "nvml");//METRIC_NAME_4
 /* MONITORING START */
-	mf_start(mf_server, exec_manager, exec_id, resource_manager, platform_id, &m_resources,my_app_report,token);//returns char *datapath
+	mf_start(mf_server, exec_manager, exec_id, resource_manager, platform_id, &m_resources, my_app_report, token);//returns char *datapath
 }
 
 int main(int argc, char* argv[]) {
@@ -124,9 +126,9 @@ int main(int argc, char* argv[]) {
 		return FAILURE;
 	}	
 	/* init arguments */
-	char mf_server[]="localhost:3033";// 141.58.0.8
-	char exec_manager[]="localhost:8700";// 141.58.0.8
-	char resource_manager[]="localhost:8600";// 141.58.0.8
+	char mf_server[]="localhost:13033";// 141.58.0.8
+	char exec_manager[]="localhost:18700";// 141.58.0.8
+	char resource_manager[]="localhost:18600";// 141.58.0.8
 	char appid[]="montanana_demo";
 	char regplatformid[]="node01";
 	char execfile[]="pthread-example";
